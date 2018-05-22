@@ -53,4 +53,21 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.web_console.whitelisted_ips = '10.0.2.2'
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :domain => "smtp.gmail.com",
+    :port => 587,
+    :user_name => "takemaru.hyper@gmail.com",
+    :password => "hnmttigeneuvoafh",
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
+  # パスワード再設定機能追加にて追記
+  host = 'localhost:3000'
+  Rails.application.routes.default_url_options[:host] = host
+
 end

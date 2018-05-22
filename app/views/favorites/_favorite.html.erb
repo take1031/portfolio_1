@@ -1,0 +1,11 @@
+<%# @products.each do |product| %>
+	<% unless session[:user_id].nil? %>
+		<% if product.favorited_by? current_user %>
+	          <%= link_to image_tag('no_fav.png', :size => "83x30"), product_favorites_path(product),method: :delete %>
+	    <% else %>
+	          <%= link_to image_tag('add_fav.png', :size => "83x30"), product_favorites_path(product),method: :post %>
+	    <% end %>
+    <% end %>
+<%# end %>
+
+<%#= render 'store/store' %>

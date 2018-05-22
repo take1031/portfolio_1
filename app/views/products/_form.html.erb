@@ -1,37 +1,46 @@
-<%= form_with(model: product, path: products_path, method: :post, local: true) do |form| %>
-  <!-- <%# if product.errors.any? %>
+<div class="p_new">
+<%= form_for @product do |f| %>
+  <% if product.errors.any? %>
     <div id="error_explanation">
-      <h2><%#= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <%# product.errors.full_messages.each do |message| %>
-        <li><%#= message %></li>
-      <%# end %>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
-  <%# end %> -->
+  <% end %>
 
   <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :product_title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 6 %>
   </div>
 
   <div>
-    <%= form.label :image_url %>
-    <%= form.text_field :image_url, id: :product_image_url %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
   </div>
 
   <div>
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :c_name %>
   </div>
+
+
+  <div>
+    <%= f.submit %>
+  </div>
+</div>
 <% end %>
+</div>

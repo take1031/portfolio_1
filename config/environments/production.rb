@@ -88,4 +88,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # パスワード再設定機能追加にて追記
+  host = 'localhost:3000'
+  Rails.application.routes.default_url_options[:host] = host
+
 end
